@@ -8,7 +8,7 @@ on:
 
 jobs:
   crawl:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 20
 
     steps:
@@ -20,9 +20,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 폴더 구조 확인
-        run: find . -type f -name "*.py" | head -20
-
       - name: 패키지 설치
         run: |
           CRAWLER_DIR=$(find . -name "requirements.txt" | head -1 | xargs dirname)
@@ -32,7 +29,6 @@ jobs:
 
       - name: Playwright 브라우저 설치
         run: |
-          pip install playwright
           python -m playwright install chromium
           python -m playwright install-deps chromium
 
