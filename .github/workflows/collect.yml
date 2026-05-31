@@ -19,12 +19,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
-          cache-dependency-path: crawler_package/크롤러/requirements.txt
+
+      - name: 폴더 구조 확인
+        run: find . -type f -name "*.py" | head -20
 
       - name: 패키지 설치
         run: |
-          cd crawler_package/크롤러
+          CRAWLER_DIR=$(find . -name "requirements.txt" | head -1 | xargs dirname)
+          echo "크롤러 경로: $CRAWLER_DIR"
+          cd "$CRAWLER_DIR"
           pip install -r requirements.txt
 
       - name: Playwright 브라우저 설치
@@ -32,7 +35,9 @@ jobs:
 
       - name: 크롤러 실행
         run: |
-          cd crawler_package/크롤러
+          CRAWLER_DIR=$(find . -name "main.py" | head -1 | xargs dirname)
+          echo "실행 경로: $CRAWLER_DIR"
+          cd "$CRAWLER_DIR"
           python main.py
         env:
           WORKNET_API_KEY:  ${{ secrets.WORKNET_API_KEY }}
