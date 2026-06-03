@@ -88,8 +88,8 @@ def crawl_gwangjin(page: Page) -> list[dict]:
     board_url = "https://www.gwangjin.go.kr/portal/bbs/B0000004/list.do?menuNo=200193"
     jobs = []
     try:
-        page.goto(board_url, timeout=20000)
-        page.wait_for_load_state("networkidle", timeout=15000)
+        page.goto(board_url, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         rows = page.query_selector_all("table tbody tr")
         for row in rows[:30]:
@@ -144,8 +144,8 @@ def crawl_songpa(page: Page) -> list[dict]:
     board_url = "https://www.songpa.go.kr/job/selectBbsNttList.do?bbsNo=94&key=3416"
     jobs = []
     try:
-        page.goto(board_url, timeout=20000)
-        page.wait_for_load_state("networkidle", timeout=15000)
+        page.goto(board_url, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         items = page.query_selector_all(".board-list li, table tbody tr")
         for item in items[:30]:
@@ -194,8 +194,8 @@ def crawl_hanam(page: Page) -> list[dict]:
     board_url = "https://www.hanam.go.kr/www/selectGosiList.do?key=172&not_ancmt_se_code=05"
     jobs = []
     try:
-        page.goto(board_url, timeout=20000)
-        page.wait_for_load_state("networkidle", timeout=15000)
+        page.goto(board_url, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         rows = page.query_selector_all("table tbody tr")
         for row in rows[:30]:
@@ -242,8 +242,8 @@ def crawl_gangdong(page: Page) -> list[dict]:
     board_url = "https://www.gangdong.go.kr/web/newportal/bbs/b_040"
     jobs = []
     try:
-        page.goto(board_url, timeout=20000)
-        page.wait_for_load_state("networkidle", timeout=15000)
+        page.goto(board_url, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         rows = page.query_selector_all("table tbody tr, ul.board-list li")
         for row in rows[:30]:
@@ -290,8 +290,8 @@ def crawl_gdfac(page: Page) -> list[dict]:
     board_url = "https://www.gdfac.or.kr/community/ko/notice"
     jobs = []
     try:
-        page.goto(board_url, timeout=20000)
-        page.wait_for_load_state("networkidle", timeout=15000)
+        page.goto(board_url, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         items = page.query_selector_all("li a, table tbody tr a")
         seen = set()
@@ -334,8 +334,8 @@ def crawl_sdfac(page: Page) -> list[dict]:
     board_url = "https://www.sdfac.or.kr/kor/recruit/main/main.do"
     jobs = []
     try:
-        page.goto(board_url, timeout=20000)
-        page.wait_for_load_state("networkidle", timeout=15000)
+        page.goto(board_url, timeout=60000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         items = page.query_selector_all("a, .recruit-item, .board-item")
         seen = set()
@@ -379,7 +379,7 @@ def crawl_kead(page: Page) -> list[dict]:
     jobs = []
     try:
         page.goto(board_url, timeout=25000)
-        page.wait_for_load_state("networkidle", timeout=20000)
+        page.wait_for_load_state("networkidle", timeout=60000)
 
         rows = page.query_selector_all("table tbody tr")
         for row in rows[:30]:
